@@ -44,8 +44,6 @@ public class MaximumSum2X2Submatrix_05 {
             }
             System.out.println();
         }
-
-
     }
 
     private static void fillMatrix(int[][] matrix, Scanner scanner) {

@@ -25,7 +25,6 @@ public class IntersectionOfTwoMatrices_03 {
             }
             System.out.println();
         }
-
     }
 
     private static void fillMatrix(char[][] matrixA, Scanner scanner) {

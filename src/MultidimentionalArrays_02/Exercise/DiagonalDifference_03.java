@@ -28,7 +28,6 @@ public class DiagonalDifference_03 {
         for (int r = 0; r < matrix.length; r++) {
             sumA += matrix[r][r];
         }
-
         return sumA;
     }
 

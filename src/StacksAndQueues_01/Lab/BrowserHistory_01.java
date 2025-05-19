@@ -9,24 +9,24 @@ public class BrowserHistory_01 {
 
         String input = scanner.nextLine();
         ArrayDeque<String> browserHistory = new ArrayDeque<>();
+        String currentURL = "";
 
         while (!input.equals("Home")) {
 
+            if (input.equals("back") && (browserHistory.size() >= 2)) {
+                browserHistory.pop();
+                currentURL = browserHistory.peek();
+                System.out.println(currentURL);
 
-            if (input.equals("back")) {
-                if (browserHistory.size() <= 1){
-                    System.out.println("no previous URLs");
-                } else {
-                    browserHistory.pop();
-                    System.out.println(browserHistory.peek());
-                }
-
+            } else if (input.equals("back")) {
+                System.out.println("no previous URLs");
             } else {
                 browserHistory.push(input);
-                System.out.println(browserHistory.peek());
+                currentURL = input;
+                System.out.println(currentURL);
             }
-
             input = scanner.nextLine();
         }
+
     }
 }

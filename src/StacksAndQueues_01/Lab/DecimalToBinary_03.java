@@ -7,18 +7,22 @@ public class DecimalToBinary_03 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int number = Integer.parseInt(scanner.nextLine());
+        int decimalNumber = Integer.parseInt(scanner.nextLine());
         ArrayDeque<Integer> binaryNumber = new ArrayDeque<>();
 
-        if (number == 0 ){
+        if (decimalNumber == 0) {
             System.out.println(0);
-        } else {
-            while (number > 0){
-                binaryNumber.push(number % 2);
-                number /= 2;
-            }
+            return;
         }
 
-        binaryNumber.forEach(System.out::print);
+        while (decimalNumber > 0) {
+            binaryNumber.push(decimalNumber % 2);
+            decimalNumber /= 2;
+        }
+
+        while (!binaryNumber.isEmpty()) {
+            System.out.print(binaryNumber.pop());
+        }
     }
 }
+

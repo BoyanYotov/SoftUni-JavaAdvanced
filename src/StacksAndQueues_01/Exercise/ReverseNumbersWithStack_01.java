@@ -9,12 +9,14 @@ public class ReverseNumbersWithStack_01 {
         Scanner scanner = new Scanner(System.in);
 
         int[] numbers = Arrays.stream(scanner.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
-        ArrayDeque<Integer> numbersStack = new ArrayDeque<>();
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
 
         for (int number : numbers) {
-            numbersStack.push(number);
+            stack.push(number);
         }
 
-        numbersStack.forEach(a -> System.out.print(a + " "));
+        while (!stack.isEmpty()) {
+            System.out.print(stack.pop() + " ");
+        }
     }
 }

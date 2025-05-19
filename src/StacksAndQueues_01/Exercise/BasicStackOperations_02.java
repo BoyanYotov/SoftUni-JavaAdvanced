@@ -9,30 +9,28 @@ public class BasicStackOperations_02 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int[] nsxNumbers = Arrays.stream(scanner.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
-        int n = nsxNumbers[0];
-        int s = nsxNumbers[1];
-        int x = nsxNumbers[2];
-        int[] numbers = Arrays.stream(scanner.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
+        int[] nsx = Arrays.stream(scanner.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
+        int n = nsx[0];
+        int s = nsx[1];
+        int x = nsx[2];
 
-        ArrayDeque<Integer> stackOfNumbers = new ArrayDeque<>();
+        int[] numbers = Arrays.stream(scanner.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
 
         for (int i = 0; i < n; i++) {
-            int currentNumber = numbers[i];
-            stackOfNumbers.push(currentNumber);
+            stack.push(numbers[i]);
         }
 
         for (int i = 0; i < s; i++) {
-            stackOfNumbers.pop();
+            stack.pop();
         }
 
-        if (stackOfNumbers.contains(x)) {
+        if (stack.contains(x)) {
             System.out.println("true");
-        } else if (stackOfNumbers.isEmpty()) {
+        } else if (stack.isEmpty()) {
             System.out.println(0);
         } else {
-            System.out.println(Collections.min(stackOfNumbers));
+            System.out.println(Collections.min(stack));
         }
-
     }
 }

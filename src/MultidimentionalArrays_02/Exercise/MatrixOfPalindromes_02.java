@@ -35,7 +35,6 @@ public class MatrixOfPalindromes_02 {
                 String cell = "" + firstLetter + secondLetter + thirdLetter;
 
                 matrix[r][c] = cell;
-
             }
         }
 

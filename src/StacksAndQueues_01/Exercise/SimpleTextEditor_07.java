@@ -9,33 +9,35 @@ public class SimpleTextEditor_07 {
 
         int n = Integer.parseInt(scanner.nextLine());
         StringBuilder text = new StringBuilder();
-        ArrayDeque<String> currentText = new ArrayDeque<>();
+        ArrayDeque<String> stack = new ArrayDeque<>();
 
-        for (int i = 1; i <= n ; i++) {
-            String input = scanner.nextLine();
-            String command = input.split("\\s+")[0];
-            String argument = "";
+        for (int i = 1; i <= n; i++) {
+            String input[] = scanner.nextLine().split("\\s+");
+            String command = input[0];
 
-            switch (command){
-                case "1":
-                    currentText.push(text.toString());
-                    argument = input.split("\\s+")[1];
-                    text.append(argument);
-                currentText.push(text.toString());
-                break;
-                case "2":
-                    currentText.push(text.toString());
-                    argument = input.split("\\s+")[1];
-                    int startIndexToDelete =text.length() - Integer.parseInt(argument);
-                    text.delete(startIndexToDelete, text.length());
-                    currentText.push(text.toString());
-                    break;
-                case "3":
-                    argument = input.split("\\s+")[1];
-                    System.out.println(text.charAt(Integer.parseInt(argument) - 1));
-                break;
-                case "4":
-                    text = new StringBuilder(currentText.pop());
+            if (command.equals("1")) {
+                String argument = input[1];
+                stack.push(text.toString());
+                text.append(argument);
+
+
+            } else if (command.equals("2")) {
+                int argument = Integer.parseInt(input[1]);
+                stack.push(text.toString());
+                text.replace(text.length() - argument, text.length(), "");
+
+
+            } else if (command.equals("3")) {
+                int index = Integer.parseInt(input[1]) - 1;
+                System.out.println(text.charAt(index));
+
+            } else if (command.equals("4")) {
+                if (!stack.isEmpty()) {
+                    text = new StringBuilder(stack.peek());
+                    stack.pop();
+                } else {
+                    text = new StringBuilder();
+                }
             }
         }
     }

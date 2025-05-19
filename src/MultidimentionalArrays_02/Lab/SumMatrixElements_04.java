@@ -17,11 +17,11 @@ public class SumMatrixElements_04 {
 
         System.out.println(rows);
         System.out.println(cols);
-        System.out.println(calculateSumOfElements(matrix,scanner));
+        System.out.println(calculateSumOfElements(matrix));
 
     }
 
-    private static int calculateSumOfElements(int[][] matrix, Scanner scanner) {
+    private static int calculateSumOfElements(int[][] matrix) {
         int sum = 0;
         for (int rows = 0; rows < matrix.length; rows++) {
             for (int cols = 0; cols < matrix[rows].length ; cols++) {

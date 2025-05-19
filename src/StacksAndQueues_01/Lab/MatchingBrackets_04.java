@@ -1,28 +1,40 @@
 package StacksAndQueues_01.Lab;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MatchingBrackets_04 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String rawInput = scanner.nextLine();
-        String [] input = rawInput.split("");
-        ArrayDeque<Integer> openBracketsIndices = new ArrayDeque<>();
-        ArrayDeque<String> results = new ArrayDeque<>();
+        String input = scanner.nextLine();
 
-        for (int i = 0; i <= input.length - 1 ; i++) {
-            String symbol = input[i];
-            if (symbol.equals("(")){
-                openBracketsIndices.push(i);
-            } else if (symbol.equals(")")){
-                int endIndex = i;
-                String substring = rawInput.substring(openBracketsIndices.pop(),endIndex + 1);
-                results.offer(substring);
+        ArrayDeque<Integer> indices = new ArrayDeque<>();
+        List<String> substrings = new ArrayList<>();
+        int openingIndex = 0;
+        int closingIndex = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            char currentSymbol = input.charAt(i);
+
+            if (currentSymbol == '(') {
+                indices.push(i);
+                continue;
+            } else if (currentSymbol == ')') {
+                closingIndex = i;
+                openingIndex = indices.pop();
+            } else {
+                continue;
             }
+
+            String expression = input.substring(openingIndex, closingIndex + 1);
+            substrings.add(expression);
         }
 
-        results.forEach(System.out::println);
+        for (String substring : substrings) {
+            System.out.println(substring);
+        }
     }
 }

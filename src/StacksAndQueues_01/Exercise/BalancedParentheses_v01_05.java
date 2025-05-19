@@ -3,7 +3,7 @@ package StacksAndQueues_01.Exercise;
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
-public class BalancedParentheses_05 {
+public class BalancedParentheses_v01_05 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -13,31 +13,31 @@ public class BalancedParentheses_05 {
         boolean isMatching = false;
 
         for (int i = 0; i < input.length(); i++) {
-            char symbol = input.charAt(i);
+            char currentSymbol = input.charAt(i);
 
-            if (symbol == '(' || symbol == '{' || symbol == '[') {
-                openBrackets.push(symbol);
-            } else if (symbol == ')' && !openBrackets.isEmpty()) {
-                if (openBrackets.peek() == '(') {
-                    openBrackets.pop();
+            if (currentSymbol == '[' || currentSymbol == '(' || currentSymbol == '{') {
+                openBrackets.push(currentSymbol);
+            } else if (currentSymbol == ')') {
+                if (!openBrackets.isEmpty() && openBrackets.peek() == '(') {
                     isMatching = true;
+                    openBrackets.pop();
                 } else {
                     isMatching = false;
                 }
-            } else if (symbol == '}' && !openBrackets.isEmpty()) {
-                if (openBrackets.peek() == '{') {
-                    openBrackets.pop();
+            } else if (currentSymbol == ']') {
+                if (!openBrackets.isEmpty() && openBrackets.peek() == '[') {
                     isMatching = true;
+                    openBrackets.pop();
                 } else {
                     isMatching = false;
                 }
-            } else if (symbol == ']' && !openBrackets.isEmpty()) {
-                if (openBrackets.peek() == '[') {
-                    openBrackets.pop();
+            } else if (currentSymbol == '}') {
+                if (!openBrackets.isEmpty() && openBrackets.peek() == '{') {
                     isMatching = true;
+                    openBrackets.pop();
+                } else {
+                    isMatching = false;
                 }
-            } else {
-                isMatching = false;
             }
         }
 

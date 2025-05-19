@@ -12,7 +12,9 @@ public class PrintDiagonalsOfSquareMatrix_06 {
         readTheMatrix(matrix,scanner);
 
         printPrimaryDiagonal(matrix,scanner);
+
         System.out.println();
+
         printSecondaryDiagonal(matrix,scanner);
     }
 
